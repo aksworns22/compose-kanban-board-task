@@ -1,44 +1,66 @@
 package woowacourse.kanban.board
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import kanbanboard.composeapp.generated.resources.Res
-import kanbanboard.composeapp.generated.resources.compose_multiplatform
-import org.jetbrains.compose.resources.painterResource
+import androidx.compose.ui.unit.dp
+import woowacourse.kanban.board.model.Assignee
+import woowacourse.kanban.board.model.Description
+import woowacourse.kanban.board.model.TagGroup
+import woowacourse.kanban.board.model.Title
 
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
-                .safeContentPadding()
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+    TaskCardView(
+        title = Title(text = "안녕하세요"),
+        description = Description.None,
+        tagGroup = TagGroup.None,
+        assignee = Assignee(name = "김철수"),
+    )
+}
+
+@Composable
+fun TaskCardView(
+    title: Title,
+    description: Description,
+    tagGroup: TagGroup,
+    assignee: Assignee,
+) {
+    Box(
+        modifier = Modifier.border(
+            border = BorderStroke(2.dp, Color.Red),
+            shape = RoundedCornerShape(8.dp),
+        ).width(200.dp).padding(8.dp),
+    ) {
+        Column {
+            Text(title.text)
+            when (description) {
+                is Description.DescriptionText -> {
+                    Text(description.text)
+                }
+
+                Description.None -> {}
             }
-            AnimatedVisibility(showContent) {
-                Image(painterResource(Res.drawable.compose_multiplatform), null)
+            when (tagGroup) {
+                is TagGroup.Items -> {
+                    Text(tagGroup.tags.joinToString { it.text })
+                }
+
+                TagGroup.None -> {}
             }
+            Text(assignee.name)
         }
     }
+
 }
