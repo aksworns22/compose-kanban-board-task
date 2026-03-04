@@ -1,0 +1,25 @@
+package woowacourse.kanban.board.view
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import woowacourse.kanban.board.model.TagGroup
+
+@Composable
+fun TagGroupView(tagGroup: TagGroup) {
+    when (tagGroup) {
+        is TagGroup.Items -> {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(8.dp)) {
+                tagGroup.tags.forEach {
+                    TagView(tag = it)
+                }
+            }
+        }
+
+        TagGroup.None -> {}
+    }
+
+}
