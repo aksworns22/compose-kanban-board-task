@@ -1,10 +1,10 @@
 package woowacourse.kanban.board.model
 
 sealed class Description {
-    data class DescriptionText private constructor(val text: String) : Description() {
+    data class Content(val text: String) : Description() {
         companion object {
             fun of(text: String): Description {
-                if(text.isNotEmpty()) return DescriptionText(text)
+                if(text.isNotEmpty()) return Content(text)
                 return None
             }
         }

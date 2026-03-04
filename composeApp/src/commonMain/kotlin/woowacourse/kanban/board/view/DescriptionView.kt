@@ -13,7 +13,7 @@ import woowacourse.kanban.board.design.FontSize
 @Composable
 fun DescriptionView(description: Description) {
     when (description) {
-        is Description.DescriptionText -> {
+        is Description.Content -> {
             Text(
                 text = description.text,
                 fontSize = FontSize.DESCRIPTION.size,
