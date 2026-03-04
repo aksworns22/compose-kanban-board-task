@@ -27,9 +27,9 @@ fun TaskCardView(
 ) {
     Box(
         modifier = Modifier.border(
-            border = BorderStroke(2.dp, Color.Gray),
+            border = BorderStroke(1.dp, Color.LightGray),
             shape = RoundedCornerShape(8.dp),
-        ).width(200.dp).padding(8.dp),
+        ).width(250.dp).padding(8.dp),
     ) {
         Column {
             TitleView(title = title)

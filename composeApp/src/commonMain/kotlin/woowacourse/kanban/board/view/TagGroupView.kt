@@ -12,7 +12,11 @@ import woowacourse.kanban.board.model.TagGroup
 fun TagGroupView(tagGroup: TagGroup) {
     when (tagGroup) {
         is TagGroup.Items -> {
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(8.dp)) {
+            FlowRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+                modifier = Modifier.padding(8.dp),
+            ) {
                 tagGroup.tags.forEach {
                     TagView(tag = it)
                 }
