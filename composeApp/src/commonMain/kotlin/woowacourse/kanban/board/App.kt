@@ -8,19 +8,20 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kanbanboard.composeapp.generated.resources.Res
 import kanbanboard.composeapp.generated.resources.account_circle_icon
 import org.jetbrains.compose.resources.painterResource
@@ -38,21 +39,21 @@ fun App() {
         TaskCardView(
             title = Title(text = "123안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요"),
             description = Description.DescriptionText.of("아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트"),
-            tagGroup = TagGroup.Items(tags = listOf(Tag("철수"), Tag("영희"), Tag("길123동"), Tag("퉁123퉁"), Tag("진123구"))),
+            tagGroup = TagGroup.None,
             assignee = Assignee(name = "김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수"),
         )
 
         TaskCardView(
             title = Title(text = "123안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요"),
-            description = Description.DescriptionText.of("아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트"),
+            description = Description.None,
             tagGroup = TagGroup.Items(tags = listOf(Tag("철수"), Tag("영희"), Tag("길123동"), Tag("퉁123퉁"), Tag("진123구"))),
             assignee = Assignee(name = "김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수"),
         )
 
         TaskCardView(
-            title = Title(text = "123안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요"),
-            description = Description.DescriptionText.of("아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트아주 긴 텍스트"),
-            tagGroup = TagGroup.Items(tags = listOf(Tag("철수"), Tag("영희"), Tag("길123동"), Tag("퉁123퉁"), Tag("진123구"))),
+            title = Title(text = "너무너무 긴 제목은 한 줄까지만 노출됩니다"),
+            description = Description.None,
+            tagGroup = TagGroup.None,
             assignee = Assignee(name = "김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수김철수"),
         )
 
@@ -76,17 +77,15 @@ fun TaskCardView(
 ) {
     Box(
         modifier = Modifier.border(
-            border = BorderStroke(2.dp, Color.Red),
+            border = BorderStroke(2.dp, Color.Gray),
             shape = RoundedCornerShape(8.dp),
         ).width(200.dp).padding(8.dp),
     ) {
         Column {
             TitleView(title = title)
-            Spacer(modifier = Modifier.height(16.dp))
             DescriptionView(description = description)
-            Spacer(modifier = Modifier.height(16.dp))
             TagGroupView(tagGroup = tagGroup)
-            Spacer(modifier = Modifier.height(16.dp))
+            HorizontalDivider(modifier = Modifier.background(Color.Gray))
             AssigneeView(assignee = assignee)
         }
     }
@@ -94,15 +93,19 @@ fun TaskCardView(
 
 @Composable
 fun TitleView(title: Title) {
-    Text(title.text,
-        overflow = TextOverflow.Ellipsis, maxLines = 1)
+    Text(
+        text = title.text,
+        fontSize = 17.sp,
+        overflow = TextOverflow.Ellipsis, maxLines = 1,
+        modifier = Modifier.padding(8.dp),
+    )
 }
 
 @Composable
 fun DescriptionView(description: Description) {
     when (description) {
         is Description.DescriptionText -> {
-            Text(description.text, overflow = TextOverflow.Ellipsis, maxLines = 2)
+            Text(description.text, overflow = TextOverflow.Ellipsis, maxLines = 2, modifier = Modifier.padding(8.dp), color = Color.DarkGray)
         }
 
         Description.None -> {}
@@ -111,31 +114,35 @@ fun DescriptionView(description: Description) {
 
 @Composable
 fun TagGroupView(tagGroup: TagGroup) {
-    FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-        when (tagGroup) {
-            is TagGroup.Items -> {
+    when (tagGroup) {
+        is TagGroup.Items -> {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(8.dp)) {
                 tagGroup.tags.forEach {
                     TagView(tag = it)
                 }
             }
-            TagGroup.None -> {}
         }
+
+        TagGroup.None -> {}
     }
+
 }
 
 @Composable
 fun TagView(tag: Tag) {
-    Text(tag.text, modifier = Modifier.background(Color.Gray))
+    Text(tag.text, modifier = Modifier.background(Color.LightGray, RoundedCornerShape(10.dp)).padding(4.dp))
 }
 
 @Composable
 fun AssigneeView(assignee: Assignee) {
-    Row {
+    Row(modifier = Modifier.padding(8.dp, 8.dp), verticalAlignment = Alignment.CenterVertically) {
         Icon(
             painter = painterResource(Res.drawable.account_circle_icon),
-            contentDescription = "사용자 기본 이미지"
+            contentDescription = "사용자 기본 이미지",
         )
-        Text(assignee.name,
-            overflow = TextOverflow.Ellipsis, maxLines = 1)
+        Text(
+            assignee.name,
+            overflow = TextOverflow.Ellipsis, maxLines = 1,
+        )
     }
 }
