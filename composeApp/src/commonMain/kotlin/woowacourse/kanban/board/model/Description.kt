@@ -1,13 +1,9 @@
 package woowacourse.kanban.board.model
 
-sealed class Description {
-    data class Content(val text: String) : Description() {
-        companion object {
-            fun of(text: String): Description {
-                if(text.isNotEmpty()) return Content(text)
-                return None
-            }
-        }
+data class Description(val text: String) {
+    fun isEmpty(): Boolean = text.isEmpty()
+
+    companion object {
+        val empty: Description = Description("")
     }
-    object None : Description()
 }
