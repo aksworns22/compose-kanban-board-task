@@ -46,7 +46,6 @@ class TagGroupTest {
         val tags = emptyList<Tag>()
         val tagGroup = TagGroup.Items(tags)
         assertIs<TagGroup.Items>(tagGroup)
-        val items = tagGroup as TagGroup.Items
-        assert(items.tags.isEmpty())
+        assert(tags.isEmpty())
     }
 }
