@@ -33,8 +33,12 @@ fun TaskCardView(
     ) {
         Column {
             TitleView(title = title)
-            DescriptionView(description = description)
-            TagGroupView(tagGroup = tagGroup)
+            if (!description.isEmpty()) {
+                DescriptionView(description = description)
+            }
+            if (!tagGroup.isEmpty()) {
+                TagGroupView(tagGroup = tagGroup)
+            }
             HorizontalDivider(modifier = Modifier.background(Color.Gray))
             AssigneeView(assignee = assignee)
         }

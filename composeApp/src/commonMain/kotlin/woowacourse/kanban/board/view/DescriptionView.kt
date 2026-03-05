@@ -12,18 +12,12 @@ import woowacourse.kanban.board.design.FontSize
 
 @Composable
 fun DescriptionView(description: Description) {
-    when (description) {
-        is Description.Content -> {
-            Text(
-                text = description.text,
-                fontSize = FontSize.DESCRIPTION.size,
-                overflow = TextOverflow.Ellipsis,
-                maxLines = 2,
-                modifier = Modifier.padding(8.dp),
-                color = Color.DarkGray,
-            )
-        }
-
-        Description.None -> {}
-    }
+    Text(
+        text = description.text,
+        fontSize = FontSize.DESCRIPTION.size,
+        overflow = TextOverflow.Ellipsis,
+        maxLines = 2,
+        modifier = Modifier.padding(8.dp),
+        color = Color.DarkGray,
+    )
 }
