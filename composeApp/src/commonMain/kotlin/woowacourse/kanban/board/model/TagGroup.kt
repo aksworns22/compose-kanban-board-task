@@ -10,6 +10,6 @@ data class TagGroup(val tags: List<Tag>){
     }
 
     companion object {
-        const val MAXIMUM_TAG_COUNT = 5
+        private const val MAXIMUM_TAG_COUNT = 5
     }
 }

@@ -7,6 +7,6 @@ data class Tag(val text: String) {
     }
 
     companion object {
-        const val MAXIMUM_TAG_LENGTH = 5
+        private const val MAXIMUM_TAG_LENGTH = 5
     }
 }
