@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
@@ -105,14 +106,17 @@ private fun TagBadgeGroup(tagGroup: TagGroup) {
 
 @Composable
 private fun AssigneeProfile(assignee: Assignee) {
-    Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
         Icon(
             painter = painterResource(Res.drawable.account_circle),
+            modifier = Modifier.size(24.dp),
+            tint = CustomColor.GRAY_DEFAULT_USER,
             contentDescription = "사용자 기본 이미지",
         )
         Spacer(modifier = Modifier.padding(4.dp))
         Text(
             text = assignee.name,
+            color = CustomColor.DARK_BLUE_ASSIGNEE_TEXT,
             fontSize = TextSize.MEDIUM,
             fontWeight = FontWeight.Bold,
             overflow = TextOverflow.Ellipsis, maxLines = 1,
