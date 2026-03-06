@@ -48,7 +48,7 @@ fun TaskCard(
     cornerRadius: Dp = 10.dp,
     borderColor: Color = CustomColor.GRAY_TASK_CARD_BORDER,
     borderWidth: Dp = Dp.Hairline,
-    padding: Dp = 17.dp
+    padding: Dp = 17.dp,
 ) {
     Box(
         modifier = Modifier.width(width).background(backgroundColor, RoundedCornerShape(cornerRadius))

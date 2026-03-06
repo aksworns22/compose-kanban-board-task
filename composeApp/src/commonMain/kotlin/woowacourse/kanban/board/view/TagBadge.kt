@@ -19,12 +19,7 @@ import woowacourse.kanban.board.design.TextSize
 import woowacourse.kanban.board.model.Tag
 
 @Composable
-fun TagBadge(
-    tag: Tag,
-    modifier: Modifier = Modifier,
-    backgroundColor: Color = CustomColor.GRAY_TAG_BADGE,
-    cornerRadius: Dp = 16.dp,
-) {
+fun TagBadge(tag: Tag, modifier: Modifier = Modifier, backgroundColor: Color = CustomColor.GRAY_TAG_BADGE, cornerRadius: Dp = 16.dp) {
     Text(
         text = tag.text,
         fontWeight = FontWeight.W400,
