@@ -63,7 +63,7 @@ fun TaskCard(
             if (!task.tagGroup.isEmpty()) {
                 TagBadgeGroup(tagGroup = task.tagGroup)
             }
-            HorizontalDivider(modifier = Modifier.background(Color.Gray))
+            HorizontalDivider(modifier = Modifier.background(CustomColor.GRAY_TASK_CARD_DIVIDER), thickness = Dp.Hairline)
             AssigneeProfile(assignee = task.assignee)
         }
     }
