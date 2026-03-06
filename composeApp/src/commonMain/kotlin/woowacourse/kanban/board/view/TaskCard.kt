@@ -21,16 +21,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import kanbanboard.composeapp.generated.resources.Res
-import kanbanboard.composeapp.generated.resources.account_circle_icon
+import kanbanboard.composeapp.generated.resources.account_circle
 import org.jetbrains.compose.resources.painterResource
 import woowacourse.kanban.board.design.FontSize
 import woowacourse.kanban.board.model.Assignee
 import woowacourse.kanban.board.model.Description
+import woowacourse.kanban.board.model.Tag
 import woowacourse.kanban.board.model.TagGroup
 import woowacourse.kanban.board.model.Task
 import woowacourse.kanban.board.model.Title
+import woowacourse.kanban.board.view.TaskCard
 
 @Composable
 fun TaskCard(task: Task) {
@@ -93,7 +98,7 @@ private fun TagBadgeGroup(tagGroup: TagGroup, modifier: Modifier = Modifier) {
 private fun AssigneeProfile(assignee: Assignee) {
     Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
         Icon(
-            painter = painterResource(Res.drawable.account_circle_icon),
+            painter = painterResource(Res.drawable.account_circle),
             contentDescription = "사용자 기본 이미지",
         )
         Spacer(modifier = Modifier.padding(4.dp))
@@ -104,4 +109,48 @@ private fun AssigneeProfile(assignee: Assignee) {
             overflow = TextOverflow.Ellipsis, maxLines = 1,
         )
     }
+}
+
+
+@Composable
+@Preview(showBackground = true)
+private fun PreviewTaskCard(
+    @PreviewParameter(TaskProvider::class) task: Task,
+) {
+    TaskCard(task = task)
+}
+
+private class TaskProvider() : PreviewParameterProvider<Task> {
+    override val values = sequenceOf(
+        Task(
+            title = Title(text = "LazyColumn 컴포넌트 구현"),
+            description = Description("세로 스크롤 가능한 리스트 컴포넌트를 만들고 성능 최적화를 적용합니다."),
+            tagGroup = TagGroup(tags = listOf(Tag("컴포넌트"), Tag("성능"))),
+            assignee = Assignee(name = "다이노"),
+        ),
+        Task(
+            title = Title(text = "LazyColumn 컴포넌트 구현"),
+            description = Description.empty,
+            tagGroup = TagGroup(tags = listOf(Tag("컴포넌트"), Tag("성능"))),
+            assignee = Assignee(name = "다이노"),
+        ),
+        Task(
+            title = Title(text = "LazyColumn 컴포넌트 구현"),
+            description = Description("세로 스크롤 가능한 리스트 컴포넌트를 만들고 성능 최적화를 적용합니다."),
+            tagGroup = TagGroup(tags = listOf()),
+            assignee = Assignee(name = "다이노"),
+        ),
+        Task(
+            title = Title(text = "LazyColumn 컴포넌트 구현"),
+            description = Description.empty,
+            tagGroup = TagGroup(tags = listOf()),
+            assignee = Assignee(name = "다이노"),
+        ),
+        Task(
+            title = Title(text = "너무너무 긴 제목은 한 줄까지만 노출됩니다"),
+            description = Description("너무너무너무 긴 설명은 두 줄까지만 노출하고 말줄임표로 처리합니다 두 줄까지만 노출하고 말줄임표로 처리합니다"),
+            tagGroup = TagGroup(tags = listOf(Tag("너무너무"), Tag("긴 태그"), Tag("최대로"), Tag("5자까지"), Tag("5개제한임"))),
+            assignee = Assignee(name = "너무너무너무 긴 담당자도 한 줄까지만 노출됩니다"),
+        ),
+    )
 }
