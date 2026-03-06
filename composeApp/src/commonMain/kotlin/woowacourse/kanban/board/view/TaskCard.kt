@@ -28,14 +28,13 @@ import androidx.compose.ui.unit.dp
 import kanbanboard.composeapp.generated.resources.Res
 import kanbanboard.composeapp.generated.resources.account_circle
 import org.jetbrains.compose.resources.painterResource
-import woowacourse.kanban.board.design.FontSize
+import woowacourse.kanban.board.design.TextSize
 import woowacourse.kanban.board.model.Assignee
 import woowacourse.kanban.board.model.Description
 import woowacourse.kanban.board.model.Tag
 import woowacourse.kanban.board.model.TagGroup
 import woowacourse.kanban.board.model.Task
 import woowacourse.kanban.board.model.Title
-import woowacourse.kanban.board.view.TaskCard
 
 @Composable
 fun TaskCard(task: Task) {
@@ -63,7 +62,7 @@ fun TaskCard(task: Task) {
 private fun TitleText(title: Title, modifier: Modifier = Modifier) {
     Text(
         text = title.text,
-        fontSize = FontSize.TITLE.size,
+        fontSize = TextSize.LARGE,
         overflow = TextOverflow.Ellipsis, maxLines = 1,
         modifier = modifier,
     )
@@ -73,7 +72,7 @@ private fun TitleText(title: Title, modifier: Modifier = Modifier) {
 private fun DescriptionText(description: Description) {
     Text(
         text = description.text,
-        fontSize = FontSize.DESCRIPTION.size,
+        fontSize = TextSize.MEDIUM,
         overflow = TextOverflow.Ellipsis,
         maxLines = 2,
         modifier = Modifier.padding(8.dp),
@@ -104,7 +103,7 @@ private fun AssigneeProfile(assignee: Assignee) {
         Spacer(modifier = Modifier.padding(4.dp))
         Text(
             text = assignee.name,
-            fontSize = FontSize.ASSIGNEE.size,
+            fontSize = TextSize.MEDIUM,
             fontWeight = FontWeight.Bold,
             overflow = TextOverflow.Ellipsis, maxLines = 1,
         )

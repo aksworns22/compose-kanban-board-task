@@ -13,8 +13,8 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import woowacourse.kanban.board.design.FontSize
 import woowacourse.kanban.board.model.Tag
+import woowacourse.kanban.board.design.TextSize
 
 @Composable
 fun TagBadge(
@@ -26,7 +26,7 @@ fun TagBadge(
 ) {
     Text(
         text = tag.text,
-        fontSize = FontSize.TAG.size,
+        fontSize = TextSize.SMALL,
         modifier = modifier.background(color = backgroundColor, shape = RoundedCornerShape(cornerRadius)).padding(contentPadding),
     )
 }
