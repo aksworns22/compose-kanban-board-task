@@ -110,16 +110,13 @@ private fun AssigneeProfile(assignee: Assignee) {
     }
 }
 
-
 @Composable
 @Preview(showBackground = true)
-private fun PreviewTaskCard(
-    @PreviewParameter(TaskProvider::class) task: Task,
-) {
+private fun PreviewTaskCard(@PreviewParameter(TaskProvider::class) task: Task) {
     TaskCard(task = task)
 }
 
-private class TaskProvider() : PreviewParameterProvider<Task> {
+private class TaskProvider : PreviewParameterProvider<Task> {
     override val values = sequenceOf(
         Task(
             title = Title(text = "LazyColumn 컴포넌트 구현"),

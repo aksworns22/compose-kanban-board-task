@@ -1,7 +1,7 @@
 package woowacourse.kanban.board.model
 
-import org.assertj.core.api.Assertions.assertThatThrownBy
 import kotlin.test.Test
+import org.assertj.core.api.Assertions.assertThatThrownBy
 
 class AssigneeTest {
     @Test
