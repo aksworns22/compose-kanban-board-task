@@ -18,7 +18,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -56,7 +55,7 @@ fun TaskCard(
             .padding(padding).then(modifier),
     ) {
         Column {
-            TitleText(title = task.title, modifier = Modifier.padding(8.dp))
+            TitleText(title = task.title)
             if (!task.description.isEmpty()) {
                 DescriptionText(description = task.description)
             }
@@ -73,6 +72,8 @@ fun TaskCard(
 private fun TitleText(title: Title, modifier: Modifier = Modifier) {
     Text(
         text = title.text,
+        color = CustomColor.BLUE_TASK_TITLE,
+        fontWeight = FontWeight.W500,
         fontSize = TextSize.LARGE,
         overflow = TextOverflow.Ellipsis, maxLines = 1,
         modifier = modifier,
