@@ -16,7 +16,7 @@ fun TagGroupView(tagGroup: TagGroup) {
         modifier = Modifier.padding(8.dp),
     ) {
         tagGroup.tags.forEach {
-            TagView(tag = it)
+            TagBadge(tag = it)
         }
     }
 }
