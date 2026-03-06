@@ -3,8 +3,10 @@ package woowacourse.kanban.board.view
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -32,10 +34,23 @@ fun TaskCardView(title: Title, description: Description, tagGroup: TagGroup, ass
                 DescriptionView(description = description)
             }
             if (!tagGroup.isEmpty()) {
-                TagGroupView(tagGroup = tagGroup)
+                TagBadgeGroup(tagGroup = tagGroup)
             }
             HorizontalDivider(modifier = Modifier.background(Color.Gray))
             AssigneeView(assignee = assignee)
+        }
+    }
+}
+
+@Composable
+private fun TagBadgeGroup(tagGroup: TagGroup, modifier: Modifier = Modifier) {
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        modifier = modifier.padding(8.dp),
+    ) {
+        tagGroup.tags.forEach {
+            TagBadge(tag = it)
         }
     }
 }
