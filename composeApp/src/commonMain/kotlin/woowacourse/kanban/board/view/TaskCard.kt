@@ -11,10 +11,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import woowacourse.kanban.board.design.FontSize
 import woowacourse.kanban.board.model.Assignee
 import woowacourse.kanban.board.model.Description
 import woowacourse.kanban.board.model.TagGroup
@@ -29,7 +32,7 @@ fun TaskCard(title: Title, description: Description, tagGroup: TagGroup, assigne
         ).width(250.dp).padding(8.dp),
     ) {
         Column {
-            TitleView(title = title)
+            TitleText(title = title, modifier = Modifier.padding(8.dp))
             if (!description.isEmpty()) {
                 DescriptionView(description = description)
             }
@@ -40,6 +43,16 @@ fun TaskCard(title: Title, description: Description, tagGroup: TagGroup, assigne
             AssigneeView(assignee = assignee)
         }
     }
+}
+
+@Composable
+private fun TitleText(title: Title, modifier: Modifier = Modifier) {
+    Text(
+        text = title.text,
+        fontSize = FontSize.TITLE.size,
+        overflow = TextOverflow.Ellipsis, maxLines = 1,
+        modifier = modifier
+    )
 }
 
 @Composable
