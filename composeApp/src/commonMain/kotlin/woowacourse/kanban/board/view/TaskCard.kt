@@ -18,16 +18,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kanbanboard.composeapp.generated.resources.Res
 import kanbanboard.composeapp.generated.resources.account_circle
 import org.jetbrains.compose.resources.painterResource
+import woowacourse.kanban.board.design.CustomColor
 import woowacourse.kanban.board.design.TextSize
 import woowacourse.kanban.board.model.Assignee
 import woowacourse.kanban.board.model.Description
@@ -37,12 +40,20 @@ import woowacourse.kanban.board.model.Task
 import woowacourse.kanban.board.model.Title
 
 @Composable
-fun TaskCard(task: Task) {
+fun TaskCard(
+    task: Task,
+    modifier: Modifier = Modifier,
+    width: Dp = 286.dp,
+    backgroundColor: Color = Color.White,
+    cornerRadius: Dp = 10.dp,
+    borderColor: Color = CustomColor.GRAY_TASK_CARD_BORDER,
+    borderWidth: Dp = Dp.Hairline,
+    padding: Dp = 17.dp
+) {
     Box(
-        modifier = Modifier.border(
-            border = BorderStroke(1.dp, Color.LightGray),
-            shape = RoundedCornerShape(8.dp),
-        ).width(250.dp).padding(8.dp),
+        modifier = Modifier.width(width).background(backgroundColor, RoundedCornerShape(cornerRadius))
+            .border(BorderStroke(borderWidth, borderColor), RoundedCornerShape(cornerRadius))
+            .padding(padding).then(modifier),
     ) {
         Column {
             TitleText(title = task.title, modifier = Modifier.padding(8.dp))
@@ -111,7 +122,7 @@ private fun AssigneeProfile(assignee: Assignee) {
 }
 
 @Composable
-@Preview(showBackground = true)
+@Preview
 private fun PreviewTaskCard(@PreviewParameter(TaskProvider::class) task: Task) {
     TaskCard(task = task)
 }
