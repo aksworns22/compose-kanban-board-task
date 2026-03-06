@@ -2,14 +2,13 @@ package woowacourse.kanban.board.model
 
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import kotlin.test.Test
-import kotlin.test.assertFailsWith
 
 class TagTest {
     @Test
-    fun `태그 텍스트가 공란일 수 없다`() {
-        assertFailsWith<IllegalArgumentException> {
+    fun `태그 텍스트는 빈 문자열일 수 없다`() {
+        assertThatThrownBy {
             Tag("")
-        }
+        }.isInstanceOf(IllegalArgumentException::class.java)
     }
 
     @Test
