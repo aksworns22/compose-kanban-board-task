@@ -34,7 +34,7 @@ fun TaskCard(title: Title, description: Description, tagGroup: TagGroup, assigne
         Column {
             TitleText(title = title, modifier = Modifier.padding(8.dp))
             if (!description.isEmpty()) {
-                DescriptionView(description = description)
+                DescriptionText(description = description)
             }
             if (!tagGroup.isEmpty()) {
                 TagBadgeGroup(tagGroup = tagGroup)
@@ -52,6 +52,18 @@ private fun TitleText(title: Title, modifier: Modifier = Modifier) {
         fontSize = FontSize.TITLE.size,
         overflow = TextOverflow.Ellipsis, maxLines = 1,
         modifier = modifier
+    )
+}
+
+@Composable
+private fun DescriptionText(description: Description) {
+    Text(
+        text = description.text,
+        fontSize = FontSize.DESCRIPTION.size,
+        overflow = TextOverflow.Ellipsis,
+        maxLines = 2,
+        modifier = Modifier.padding(8.dp),
+        color = Color.DarkGray,
     )
 }
 
