@@ -16,7 +16,6 @@ import woowacourse.kanban.board.model.Title
 import woowacourse.kanban.board.view.TaskCard
 
 @Composable
-@Preview
 fun App() {
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(15.dp),
