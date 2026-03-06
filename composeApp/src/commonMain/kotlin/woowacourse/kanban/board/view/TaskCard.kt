@@ -59,7 +59,7 @@ private fun TitleText(title: Title, modifier: Modifier = Modifier) {
         text = title.text,
         fontSize = FontSize.TITLE.size,
         overflow = TextOverflow.Ellipsis, maxLines = 1,
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
