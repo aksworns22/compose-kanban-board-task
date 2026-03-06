@@ -54,7 +54,7 @@ fun TaskCard(
             .border(BorderStroke(borderWidth, borderColor), RoundedCornerShape(cornerRadius))
             .padding(padding).then(modifier),
     ) {
-        Column {
+        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
             TitleText(title = task.title)
             if (!task.description.isEmpty()) {
                 DescriptionText(description = task.description)
@@ -84,11 +84,10 @@ private fun TitleText(title: Title, modifier: Modifier = Modifier) {
 private fun DescriptionText(description: Description) {
     Text(
         text = description.text,
+        color = CustomColor.GRAY_TASK_DESCRIPTION,
         fontSize = TextSize.MEDIUM,
         overflow = TextOverflow.Ellipsis,
         maxLines = 2,
-        modifier = Modifier.padding(8.dp),
-        color = Color.DarkGray,
     )
 }
 
