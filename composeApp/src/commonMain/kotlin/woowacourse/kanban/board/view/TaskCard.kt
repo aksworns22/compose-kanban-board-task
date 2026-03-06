@@ -7,16 +7,24 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import kanbanboard.composeapp.generated.resources.Res
+import kanbanboard.composeapp.generated.resources.account_circle_icon
+import org.jetbrains.compose.resources.painterResource
 import woowacourse.kanban.board.design.FontSize
 import woowacourse.kanban.board.model.Assignee
 import woowacourse.kanban.board.model.Description
@@ -40,7 +48,7 @@ fun TaskCard(title: Title, description: Description, tagGroup: TagGroup, assigne
                 TagBadgeGroup(tagGroup = tagGroup)
             }
             HorizontalDivider(modifier = Modifier.background(Color.Gray))
-            AssigneeView(assignee = assignee)
+            AssigneeProfile(assignee = assignee)
         }
     }
 }
@@ -77,5 +85,22 @@ private fun TagBadgeGroup(tagGroup: TagGroup, modifier: Modifier = Modifier) {
         tagGroup.tags.forEach {
             TagBadge(tag = it)
         }
+    }
+}
+
+@Composable
+private fun AssigneeProfile(assignee: Assignee) {
+    Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+        Icon(
+            painter = painterResource(Res.drawable.account_circle_icon),
+            contentDescription = "사용자 기본 이미지",
+        )
+        Spacer(modifier = Modifier.padding(4.dp))
+        Text(
+            text = assignee.name,
+            fontSize = FontSize.ASSIGNEE.size,
+            fontWeight = FontWeight.Bold,
+            overflow = TextOverflow.Ellipsis, maxLines = 1,
+        )
     }
 }
