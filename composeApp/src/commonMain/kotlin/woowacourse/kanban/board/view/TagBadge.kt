@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import woowacourse.kanban.board.design.CustomColor
 import woowacourse.kanban.board.design.TextSize
 import woowacourse.kanban.board.model.Tag
 
@@ -20,7 +21,7 @@ import woowacourse.kanban.board.model.Tag
 fun TagBadge(
     tag: Tag,
     modifier: Modifier = Modifier,
-    backgroundColor: Color = Color(0xFFDEDEDE),
+    backgroundColor: Color = CustomColor.GRAY_TAG_BADGE,
     cornerRadius: Dp = 10.dp,
     contentPadding: Dp = 4.dp,
 ) {
