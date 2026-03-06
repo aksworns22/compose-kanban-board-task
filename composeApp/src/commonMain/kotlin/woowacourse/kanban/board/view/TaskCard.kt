@@ -92,14 +92,13 @@ private fun DescriptionText(description: Description) {
 }
 
 @Composable
-private fun TagBadgeGroup(tagGroup: TagGroup, modifier: Modifier = Modifier) {
+private fun TagBadgeGroup(tagGroup: TagGroup) {
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp),
-        modifier = modifier.padding(8.dp),
     ) {
         tagGroup.tags.forEach {
-            TagBadge(tag = it)
+            TagBadge(tag = it, modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
         }
     }
 }
