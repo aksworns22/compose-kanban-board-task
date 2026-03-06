@@ -6,9 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import woowacourse.kanban.board.model.Title
 import woowacourse.kanban.board.design.FontSize
-
+import woowacourse.kanban.board.model.Title
 
 @Composable
 fun TitleView(title: Title) {

@@ -19,12 +19,7 @@ import woowacourse.kanban.board.model.TagGroup
 import woowacourse.kanban.board.model.Title
 
 @Composable
-fun TaskCardView(
-    title: Title,
-    description: Description,
-    tagGroup: TagGroup,
-    assignee: Assignee,
-) {
+fun TaskCardView(title: Title, description: Description, tagGroup: TagGroup, assignee: Assignee) {
     Box(
         modifier = Modifier.border(
             border = BorderStroke(1.dp, Color.LightGray),

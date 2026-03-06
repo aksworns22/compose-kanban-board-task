@@ -8,8 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import woowacourse.kanban.board.model.Tag
 import woowacourse.kanban.board.design.FontSize
+import woowacourse.kanban.board.model.Tag
 
 @Composable
 fun TagView(tag: Tag) {

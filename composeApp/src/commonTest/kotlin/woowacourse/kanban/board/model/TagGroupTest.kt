@@ -12,7 +12,7 @@ class TagGroupTest {
             Tag("tag2"),
             Tag("tag3"),
             Tag("tag4"),
-            Tag("tag5")
+            Tag("tag5"),
         )
         val tagGroup = TagGroup(tags)
         assertIs<TagGroup>(tagGroup)
@@ -28,7 +28,7 @@ class TagGroupTest {
             Tag("tag3"),
             Tag("tag4"),
             Tag("tag5"),
-            Tag("tag6")
+            Tag("tag6"),
         )
         assertFailsWith<IllegalArgumentException> {
             TagGroup(tags)

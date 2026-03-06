@@ -57,5 +57,4 @@ fun App() {
             assignee = Assignee(name = "너무너무너무 긴 담당자도 한 줄까지만 노출됩니다"),
         )
     }
-
 }
