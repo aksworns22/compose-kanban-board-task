@@ -29,10 +29,11 @@ import woowacourse.kanban.board.design.FontSize
 import woowacourse.kanban.board.model.Assignee
 import woowacourse.kanban.board.model.Description
 import woowacourse.kanban.board.model.TagGroup
+import woowacourse.kanban.board.model.Task
 import woowacourse.kanban.board.model.Title
 
 @Composable
-fun TaskCard(title: Title, description: Description, tagGroup: TagGroup, assignee: Assignee) {
+fun TaskCard(task: Task) {
     Box(
         modifier = Modifier.border(
             border = BorderStroke(1.dp, Color.LightGray),
@@ -40,15 +41,15 @@ fun TaskCard(title: Title, description: Description, tagGroup: TagGroup, assigne
         ).width(250.dp).padding(8.dp),
     ) {
         Column {
-            TitleText(title = title, modifier = Modifier.padding(8.dp))
-            if (!description.isEmpty()) {
-                DescriptionText(description = description)
+            TitleText(title = task.title, modifier = Modifier.padding(8.dp))
+            if (!task.description.isEmpty()) {
+                DescriptionText(description = task.description)
             }
-            if (!tagGroup.isEmpty()) {
-                TagBadgeGroup(tagGroup = tagGroup)
+            if (!task.tagGroup.isEmpty()) {
+                TagBadgeGroup(tagGroup = task.tagGroup)
             }
             HorizontalDivider(modifier = Modifier.background(Color.Gray))
-            AssigneeProfile(assignee = assignee)
+            AssigneeProfile(assignee = task.assignee)
         }
     }
 }
