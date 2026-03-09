@@ -12,9 +12,9 @@ class TagTest {
     }
 
     @Test
-    fun `태그 텍스트가 최대 길이를 넘어가면 예외가 발생한다`() {
+    fun `태그 텍스트가 5글자를 넘어가면 예외가 발생한다`() {
         assertThatThrownBy {
-            Tag("최대 길이를 넘어가면 안됩니다!")
+            Tag("5글자를 넘어가면 안됩니다!")
         }.isInstanceOf(IllegalArgumentException::class.java)
     }
 }
