@@ -70,7 +70,8 @@ private fun TitleText(title: Title) {
         color = CustomColor.BLUE_TASK_TITLE,
         fontWeight = FontWeight.W500,
         fontSize = TextSize.LARGE,
-        overflow = TextOverflow.Ellipsis, maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
+        maxLines = 1,
     )
 }
 
